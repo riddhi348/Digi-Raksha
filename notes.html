@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#002116",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e2e3e0",
+                    "primary-container": "#0f3d2e",
+                    "tertiary-container": "#542a26",
+                    "on-error": "#ffffff",
+                    "outline": "#717974",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1a1c1b",
+                    "on-background": "#1a1c1b",
+                    "surface-dim": "#d9dad7",
+                    "inverse-surface": "#2f312f",
+                    "surface-container-highest": "#e2e3e0",
+                    "background": "#f9faf7",
+                    "on-surface-variant": "#414944",
+                    "inverse-primary": "#a2d1bb",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdad6",
+                    "surface-container": "#edeeeb",
+                    "inverse-on-surface": "#f0f1ee",
+                    "tertiary-fixed-dim": "#f7b7b0",
+                    "primary": "#00261a",
+                    "tertiary": "#3a1512",
+                    "on-primary": "#ffffff",
+                    "surface": "#f9faf7",
+                    "on-tertiary-fixed-variant": "#683a36",
+                    "secondary-container": "#96f2c5",
+                    "on-tertiary-container": "#cc908a",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#7dd8ad",
+                    "on-secondary-fixed-variant": "#005237",
+                    "primary-fixed": "#beedd7",
+                    "on-secondary-fixed": "#002114",
+                    "surface-bright": "#f9faf7",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#7ba894",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#3b6756",
+                    "surface-container-high": "#e8e8e5",
+                    "primary-fixed-dim": "#a2d1bb",
+                    "on-tertiary-fixed": "#34100d",
+                    "secondary": "#006c4a",
+                    "outline-variant": "#c0c8c3",
+                    "secondary-fixed": "#99f5c8",
+                    "surface-container-low": "#f3f4f1",
+                    "on-secondary-container": "#00714e",
+                    "on-primary-fixed-variant": "#234f3f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-xs": "4px",
+                    "stack-lg": "32px",
+                    "unit": "8px",
+                    "stack-md": "16px",
+                    "margin": "32px",
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Public Sans"],
+                    "h2": ["Public Sans"],
+                    "body-md": ["Public Sans"],
+                    "caption": ["Public Sans"],
+                    "h1": ["Public Sans"],
+                    "body-lg": ["Public Sans"],
+                    "h3": ["Public Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["32px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .security-grid {
+            background-image: radial-gradient(circle, #7ba894 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.05;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<header class="bg-slate-50 dark:bg-slate-950 flex justify-between items-center px-6 h-16 w-full docked full-width top-0 border-b border-emerald-100 dark:border-emerald-900/40 shadow-sm shadow-emerald-900/5 z-50">
+<div onclick="navigateTo('user dashboard.html')" class="flex items-center gap-stack-md cursor-pointer">
+<span class="material-symbols-outlined text-emerald-900 dark:text-emerald-400" data-icon="shield">shield</span>
+<h1 class="text-xl font-black text-emerald-900 dark:text-emerald-500 tracking-widest font-public-sans">FORTRESS</h1>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="p-2 rounded-full hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors">
+<span class="material-symbols-outlined text-slate-500" data-icon="search">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center border border-emerald-200">
+<img alt="User Profile" class="w-full h-full rounded-full" data-alt="professional corporate headshot of a person with a neutral background, soft professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqv5161aBJFQ_5Fizx2c82XJJlf1YHkncYpVtTEzwa8HcBX7iX7kDoYcqv7SN3uXBP6B8cfGW_n_Hz2-qxyrNyP7x1hQHrWdZNhvNzzeMk0NMg0EBheHZTKraHA4VfXfR2fDEefXbVlx3r1Bet6q-zp-wIhp_5jruwkzNdZ3y3__AK0xXeeZo0Sd4jfHCmJtYQR0rF3U2guP2Mk6MzY7vmFS3PulfwW_nD-RnriifQ6cCVgcJa64RZJE0ADmzwT2_K77ZtRpP557M3"/>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-start py-stack-lg px-gutter relative overflow-hidden">
+<div class="absolute inset-0 security-grid pointer-events-none"></div>
+<div class="max-w-[800px] w-full flex flex-col gap-stack-lg z-10">
+<section class="flex flex-col gap-stack-xs mb-stack-sm">
+<div class="flex items-center gap-stack-sm">
+<span class="px-2 py-0.5 bg-secondary-container/20 text-secondary font-label-md text-caption rounded uppercase tracking-widest">Secure Entry</span>
+</div>
+<h2 class="font-h1 text-h1 text-primary">Add New Cipher Note</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-prose">Your content is encrypted locally using AES-256 before being transmitted to the Fortress vault. No metadata is stored in plain text.</p>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 flex flex-col gap-stack-md">
+<div class="bg-white border border-emerald-100 rounded-xl overflow-hidden shadow-sm flex flex-col group focus-within:border-emerald-500 transition-colors duration-300">
+<div class="bg-surface-container-low px-stack-md py-stack-sm border-b border-emerald-50 flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">SECURE TEXT AREA</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-slate-400 text-[18px]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]" data-icon="terminal">terminal</span>
+</div>
+</div>
+<textarea class="w-full min-h-[400px] p-stack-md font-body-md text-body-md bg-transparent border-none focus:ring-0 resize-none text-on-surface placeholder:text-slate-300" placeholder="Begin typing sensitive information here..."></textarea>
+<div class="px-stack-md py-stack-sm flex items-center justify-between border-t border-emerald-50 bg-surface-container-lowest">
+<div class="flex gap-stack-sm">
+<button class="p-1.5 hover:bg-emerald-50 rounded transition-colors">
+<span class="material-symbols-outlined text-emerald-900" data-icon="format_bold">format_bold</span>
+</button>
+<button class="p-1.5 hover:bg-emerald-50 rounded transition-colors">
+<span class="material-symbols-outlined text-emerald-900" data-icon="format_list_bulleted">format_list_bulleted</span>
+</button>
+<button class="p-1.5 hover:bg-emerald-50 rounded transition-colors">
+<span class="material-symbols-outlined text-emerald-900" data-icon="link">link</span>
+</button>
+</div>
+<span class="font-caption text-caption text-slate-400">Characters: 0 / 10,000</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-stack-md">
+<div class="bg-white border border-emerald-100 rounded-xl p-stack-md flex flex-col gap-stack-md">
+<h3 class="font-h3 text-label-md uppercase text-primary border-b border-emerald-50 pb-2">Vault Options</h3>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-caption text-on-surface-variant">CLASSIFICATION</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary/20">
+<option>Internal Use Only</option>
+<option>Confidential</option>
+<option>Top Secret</option>
+<option>Personal</option>
+</select>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-caption text-on-surface-variant">AUTO-DESTRUCT</label>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded font-label-md text-caption">NEVER</button>
+<button class="flex-1 py-1.5 bg-surface-container-low text-slate-500 border border-transparent rounded font-label-md text-caption hover:bg-emerald-50 transition-colors">24H</button>
+<button class="flex-1 py-1.5 bg-surface-container-low text-slate-500 border border-transparent rounded font-label-md text-caption hover:bg-emerald-50 transition-colors">7D</button>
+</div>
+</div>
+<div class="flex flex-col gap-stack-sm pt-stack-md">
+<button onclick="handleNoteSave(event)" class="w-full bg-primary-container text-white py-4 rounded-xl flex items-center justify-center gap-stack-md font-label-md tracking-widest hover:bg-primary transition-all active:scale-[0.98] shadow-lg shadow-emerald-900/10">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                                SECURE UPLOAD
+                            </button>
+<button onclick="mockAction(event, 'SAVE AS DRAFT', 'SAVING...', 'DRAFT SAVED')" class="w-full py-4 rounded-xl border border-emerald-100 font-label-md text-emerald-900 hover:bg-emerald-50 transition-colors">
+                                SAVE AS DRAFT
+                            </button>
+</div>
+</div>
+<div class="p-stack-md bg-emerald-50/50 border border-emerald-100 rounded-xl flex items-start gap-stack-md">
+<span class="material-symbols-outlined text-emerald-700 text-[20px]" data-icon="info">info</span>
+<p class="font-caption text-caption text-emerald-900/70">Files uploaded to the vault are sharded across decentralized nodes for maximum resilience.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-900/40 shadow-[0_-4px_12px_rgba(15,61,46,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 font-public-sans text-[10px] font-semibold uppercase tracking-wider hover:text-emerald-700" href="user dashboard.html">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+            Vault
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 font-public-sans text-[10px] font-semibold uppercase tracking-wider hover:text-emerald-700" href="credentials.html">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+            Credentials
+        </a>
+<a class="flex flex-col items-center justify-center bg-emerald-50 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-300 rounded-xl px-3 py-1 font-public-sans text-[10px] font-semibold uppercase tracking-wider scale-95 active:scale-90 transition-transform duration-200" href="documents.html">
+<span class="material-symbols-outlined" data-icon="add_box" style="font-variation-settings: 'FILL' 1;">add_box</span>
+            Upload
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 font-public-sans text-[10px] font-semibold uppercase tracking-wider hover:text-emerald-700" href="medical reports.html">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+            Medical
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 font-public-sans text-[10px] font-semibold uppercase tracking-wider hover:text-emerald-700" href="user dashboard.html">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+            Activity
+        </a>
+</nav>
+<aside class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 h-full w-80 border-r border-emerald-50 dark:border-emerald-900/20 bg-white dark:bg-slate-950 shadow-2xl shadow-emerald-900/20 hidden lg:flex">
+<div class="mb-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-emerald-900 flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h4 class="font-h3 text-label-md text-emerald-900 uppercase">Fortress Vault</h4>
+<p class="font-caption text-caption text-slate-400">Node: US-EAST-01</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 hover:pl-2 transition-all duration-300 font-public-sans text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="security">security</span>
+                Security Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 hover:pl-2 transition-all duration-300 font-public-sans text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="vpn_key">vpn_key</span>
+                Encryption Keys
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 hover:pl-2 transition-all duration-300 font-public-sans text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+                Shared Vaults
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 hover:pl-2 transition-all duration-300 font-public-sans text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+                Help Center
+            </a>
+</nav>
+<div class="mt-auto pt-stack-lg border-t border-emerald-50">
+<div class="flex items-center gap-3 p-2 bg-emerald-50 rounded-xl">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="close-up avatar of a tech professional, minimal aesthetic, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtdLNABizFfZxcKE9C63jtK8HcfwjssgP0CSGWNAaJ9xmZw9HxAA42nM8J98OE6oBDFIRuNQD2P_cdsu8GMMvAb5QYkmMObnvMfzJie0w_M5xTCP8RInEdwTaXOBOSqIGLTUFADb1ySza8z1dNHVB0l4JEbV94FFJBR5yTOoQ56t9rxfJHUxBgnI_QQkjvnzc2wdRtf87_dXAwpQRXXeN60eFSHHZBGJltcLcN-FUJ6Qky49CIMtLt7zoEToQQwoxGmWr-WAXugo2c"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-emerald-900">Secure User</span>
+<span class="font-caption text-caption text-emerald-700/60 text-[10px]">PRO MEMBER</span>
+</div>
+<button onclick="handleLogout()" class="ml-auto text-emerald-900">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</button>
+</div>
+</div>
+<script src="app.js"></script>
+</body></html>

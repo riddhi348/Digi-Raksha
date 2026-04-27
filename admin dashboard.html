@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vault Admin - User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#99f5c8",
+                        "secondary-fixed-dim": "#7dd8ad",
+                        "background": "#f9faf7",
+                        "surface": "#f9faf7",
+                        "inverse-primary": "#a2d1bb",
+                        "surface-container-high": "#e8e8e5",
+                        "on-secondary-fixed-variant": "#005237",
+                        "on-error-container": "#93000a",
+                        "outline": "#717974",
+                        "error": "#ba1a1a",
+                        "on-background": "#1a1c1b",
+                        "surface-container-low": "#f3f4f1",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#3b6756",
+                        "surface-container": "#edeeeb",
+                        "tertiary": "#3a1512",
+                        "outline-variant": "#c0c8c3",
+                        "on-surface-variant": "#414944",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9faf7",
+                        "surface-dim": "#d9dad7",
+                        "on-primary-fixed-variant": "#234f3f",
+                        "surface-variant": "#e2e3e0",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e2e3e0",
+                        "inverse-on-surface": "#f0f1ee",
+                        "on-tertiary-container": "#cc908a",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#002116",
+                        "primary-fixed-dim": "#a2d1bb",
+                        "on-primary-container": "#7ba894",
+                        "on-secondary-container": "#00714e",
+                        "primary-container": "#0f3d2e",
+                        "on-tertiary-fixed": "#34100d",
+                        "secondary": "#006c4a",
+                        "inverse-surface": "#2f312f",
+                        "secondary-container": "#96f2c5",
+                        "primary": "#00261a",
+                        "on-surface": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdad6",
+                        "tertiary-fixed-dim": "#f7b7b0",
+                        "tertiary-container": "#542a26",
+                        "primary-fixed": "#beedd7",
+                        "on-tertiary-fixed-variant": "#683a36",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "stack-xs": "4px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Public Sans"],
+                        "caption": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "h1": ["Public Sans"],
+                        "h3": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Public Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-950 flex justify-between items-center w-full px-6 h-16 docked full-width top-0 border-b border-slate-200 dark:border-slate-800 flat no shadows z-50">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-emerald-900 dark:text-emerald-400" data-icon="shield">shield</span>
+<span class="text-lg font-black tracking-tighter text-emerald-900 dark:text-emerald-50 uppercase">Vault Admin</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-6">
+<button class="font-public-sans text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors px-3 py-1">Support</button>
+<button class="font-public-sans text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors px-3 py-1">Docs</button>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200">
+<button onclick="handleAdminLogout()" class="flex items-center gap-2 px-3 py-1.5 bg-primary-container text-white text-sm font-semibold hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+                    Logout
+                </button>
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="professional portrait of a system administrator in a clean minimalist style with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAccL8eUoU4BCUkzcp-0jrOCmsZlfNiQpptaoZ_XLBTSQWoWDNn2-IEEBoQ8SVkz5ipZZCgV7bshyA18upZCa780G6oRQGLwRXSOz_HaPLa4Urbehsmzgv31ICmMxjdbfPniLY5KcoTx-rm28IIE2MzuwKH0Lta-LXdykgi2EeVhK-jcXcnYEtFOQPcZzAMb0_K7NLRHsDXPYJbs2KuDEz6SEA1aATziEoPhPWBqdT2vCheVX99KSZv9BVBPYW2iyOSK3dA3ceMHZpR"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- NavigationDrawer -->
+<aside class="bg-slate-50 dark:bg-slate-900 h-full w-64 border-r border-slate-200 dark:border-slate-800 flat no shadows hidden md:flex flex-col sticky top-0 p-4 gap-2">
+<div class="mb-stack-lg px-2 py-4 flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<img alt="Admin User" class="w-10 h-10 rounded-lg" data-alt="high contrast digital avatar icon of a security professional with emerald accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBus9h5Ygc6_gIx_cNo7bulmzYYY4nG44l3agnghQxarhs95vpHFcF_CbuHz-IeAcOjLHDNlm90sljyqoCnYQdyoYqOwtwVqIu6NORK3lC7oNcGEkxX7g4TwqjdseiZoK0Usqz6IAMRoITP9wjO4gBhymsK8Mrj9dh9K5wx95LlFZM6eS1-WKNEd47JVDypY82x9yw-z7bwt7FGyBgJUyuAa96Fq2FrNqovg_fnPFZBm6gCKFYlLH1nsDkkuPS8MmwgaeyUgnvBVgQh"/>
+<div class="flex flex-col">
+<span class="font-public-sans text-sm font-semibold text-emerald-900 dark:text-emerald-50">System Administrator</span>
+<span class="text-[10px] uppercase tracking-widest text-slate-500">Institutional Access</span>
+</div>
+</div>
+<div class="mt-2 inline-flex items-center gap-1 self-start px-2 py-0.5 bg-emerald-100 text-emerald-900 text-[10px] font-bold rounded-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    Verified
+                </div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-emerald-900 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 font-public-sans text-sm tracking-wide duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Overview
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-emerald-900 text-white dark:bg-emerald-500 dark:text-slate-950 rounded-sm font-medium font-public-sans text-sm tracking-wide duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                    User Management
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-emerald-900 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 font-public-sans text-sm tracking-wide duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+                    Storage Metrics
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-emerald-900 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 font-public-sans text-sm tracking-wide duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                    Security Logs
+                </a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-gutter md:p-margin pb-24 md:pb-margin">
+<div class="max-w-container-max mx-auto flex flex-col gap-stack-lg">
+<!-- Header & Search Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+<div class="flex flex-col gap-stack-xs">
+<h1 class="font-h1 text-h1 text-primary">User Management</h1>
+<p class="font-body-md text-on-surface-variant max-w-xl">Configure permissions, audit access, and manage the institutional identities within your secure vault cluster.</p>
+</div>
+<div class="w-full md:w-96">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-secondary transition-colors" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-white border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary/20 transition-all outline-none rounded-none font-body-md" placeholder="Search by name, email, or ID..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Stats Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-white border border-outline-variant p-stack-md flex flex-col gap-2">
+<span class="text-caption font-caption text-outline-variant uppercase tracking-widest">Active Users</span>
+<div class="flex items-end gap-2">
+<span id="stat-users" class="text-h2 font-h2 text-primary">0</span>
+<span class="text-secondary text-sm font-bold pb-1 flex items-center"><span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span> +12%</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-md flex flex-col gap-2">
+<span class="text-caption font-caption text-outline-variant uppercase tracking-widest">Pending Verification</span>
+<div class="flex items-end gap-2">
+<span class="text-h2 font-h2 text-primary">43</span>
+<span class="text-error text-sm font-bold pb-1">-5%</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-stack-md flex flex-col gap-2">
+<span class="text-caption font-caption text-outline-variant uppercase tracking-widest">Storage Utilization</span>
+<div class="flex items-end gap-2">
+<span class="text-h2 font-h2 text-primary">68%</span>
+<div class="flex-1 h-1.5 bg-surface-container-low mb-2 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 68%"></div>
+</div>
+</div>
+</div>
+<div class="bg-primary-container p-stack-md flex flex-col justify-between">
+<span class="text-caption font-caption text-on-primary-container uppercase tracking-widest">Quick Actions</span>
+<button class="mt-4 w-full py-2 bg-secondary text-white font-label-md text-label-md hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                            Provision New User
+                        </button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white border border-outline-variant overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-h3 text-h3 text-primary">Directory</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-outline" data-icon="filter_list">filter_list</span></button>
+<button class="p-2 hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-outline" data-icon="download">download</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest text-outline-variant uppercase text-[10px] font-bold tracking-[0.2em] border-b border-outline-variant">
+<th class="px-6 py-4">Name</th>
+<th class="px-6 py-4">Email</th>
+<th class="px-6 py-4">Security Key</th>
+<th class="px-6 py-4">Account Created</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-background divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-8 bg-secondary scale-y-0 group-hover:scale-y-100 transition-transform origin-top -ml-6 mr-3"></div>
+<img alt="User" class="w-8 h-8 rounded-full bg-surface-container-high" data-alt="professional close-up portrait of a corporate executive in a neutral environment with soft rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQr-R_scS7W9MVRDMXFau1PAF7myszAQnUB1PyGj2LEABnWJiP7gjtY3-NU65j0qOpIjM2OH6lqx66Q2oCfzUXo3NjLZQuoTbNxMN0pfamRvJ8u-ioks4RFQfkERAFqEiZ2af2OXEGODQZqkCPrcWWH94ZMYwlDhU4vy7bRwWR5myYaxMkCyzZUhOjA_vG3yNIiffUaJj4mCuBoO7hTNgd9dbYVArIBxN1NxWgfYPCgaz7l05aWvphOw0p6ikG3wl-ergIQpOUDVlj"/>
+<div>
+<div class="font-semibold text-primary">Alexander Thorne</div>
+<div class="text-caption text-outline text-[11px] uppercase tracking-tighter">ID: VLT-882-QX</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">a.thorne@fortress.corp</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 font-mono text-sm text-outline">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="vpn_key">vpn_key</span>
+                                            ••••••••••••••••
+                                        </div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">24 Oct 2023, 09:14</td>
+<td class="px-6 py-4 text-right">
+<button class="text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-8 bg-secondary scale-y-0 group-hover:scale-y-100 transition-transform origin-top -ml-6 mr-3"></div>
+<img alt="User" class="w-8 h-8 rounded-full bg-surface-container-high" data-alt="modern professional business portrait of a woman with a confident expression in front of a minimalist grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzTdY_8YdGCKp61qjv4_3HZ0Nk3IUiRqv3kTKexU51GIpKBtwVv11B7lfrYtz7pxWY27EYz54Sa6Olh_FFHt7OD4oAJuLqMjW1BzxEjgtXvIvdNbj15AUq1qUn_pzFfVI4BE2upDVsbBULmgltsQk-vG_i0KdtmUzM9Hur9vVfnEMUkuecA1s3k-zVBxFHVDI7UapLveL95D2H86EmVl9uiN2gp0SzeZlgMdcfYpB7s0V6KXHDoy6V3KzBMQWoc3QtSVAVSwJuUP3Q"/>
+<div>
+<div class="font-semibold text-primary">Sarah Chen</div>
+<div class="text-caption text-outline text-[11px] uppercase tracking-tighter">ID: VLT-129-BA</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">s.chen@fortress.corp</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 font-mono text-sm text-outline">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="vpn_key">vpn_key</span>
+                                            ••••••••••••••••
+                                        </div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">12 Nov 2023, 14:32</td>
+<td class="px-6 py-4 text-right">
+<button class="text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-8 bg-secondary scale-y-0 group-hover:scale-y-100 transition-transform origin-top -ml-6 mr-3"></div>
+<img alt="User" class="w-8 h-8 rounded-full bg-surface-container-high" data-alt="sharp portrait of a technology professional wearing glasses with cool blue highlights from a screen nearby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8OkE7P1tPspZoR0cHgSwcJDId1bX0C8lKb_UBvAifg7utWSzBkDXdp7daYsPIAFsU-K2yoepY0k2KaWNGJG4CzgXBSQ5BabQxtue2Bzn1TmfMFHgcVhq0Dvlz9pRK4OdBhxqt59vIxrtjrA2LAFztS8olvkK6LTppvCxWmBGSQtQNNOcL-zwtGoirkR323t2j1MCnxrDnre0hiBHW2IhY4RX1SqzZeZlAq68jZW4yfB3vxvwAWFP1R0iLf9b_jQtcf-AgPVynn7B2"/>
+<div>
+<div class="font-semibold text-primary">Marcus Holloway</div>
+<div class="text-caption text-outline text-[11px] uppercase tracking-tighter">ID: VLT-045-ZK</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">m.holloway@fortress.corp</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 font-mono text-sm text-outline">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="vpn_key">vpn_key</span>
+                                            ••••••••••••••••
+                                        </div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">02 Jan 2024, 11:05</td>
+<td class="px-6 py-4 text-right">
+<button class="text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-8 bg-secondary scale-y-0 group-hover:scale-y-100 transition-transform origin-top -ml-6 mr-3"></div>
+<img alt="User" class="w-8 h-8 rounded-full bg-surface-container-high" data-alt="clean professional headshot of a middle-aged woman in a structured blazer against a clean white backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFWrmliAIuB-IvIyQERjLe02ZUzWGsnqLhLwqzPpbOOeE0R0KTTrjET4W7Tat9qaHoOk7H-LJpiK4gkTopi4oK9umCX616plKSNPoFD9PvcHLTbz9rjuNTSgbxGF9lgrCV4QQqLVkmkEmcebFRnqo8GH63uZjlppoGioXoe6pf2tIRgNH9HsSSQFIzVriPzuKjDbEI_yvpacQdWDkfvXwtrBnAG2mAaDCK3yZYp9rxn1WNZxZcpvhsaZGYe6Zy9m8WMkXkSJST06xb"/>
+<div>
+<div class="font-semibold text-primary">Elena Rodriguez</div>
+<div class="text-caption text-outline text-[11px] uppercase tracking-tighter">ID: VLT-661-LM</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">e.rod@fortress.corp</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 font-mono text-sm text-outline">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="vpn_key">vpn_key</span>
+                                            ••••••••••••••••
+                                        </div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">15 Feb 2024, 08:45</td>
+<td class="px-6 py-4 text-right">
+<button class="text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-outline-variant flex justify-between items-center text-caption text-outline">
+<span>Showing 4 of 1,284 users</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant hover:bg-surface-container-low transition-colors">Previous</button>
+<button class="px-3 py-1 bg-primary-container text-white">1</button>
+<button class="px-3 py-1 border border-outline-variant hover:bg-surface-container-low transition-colors">2</button>
+<button class="px-3 py-1 border border-outline-variant hover:bg-surface-container-low transition-colors">Next</button>
+</div>
+</div>
+</div>
+<!-- Footer Context -->
+<footer class="mt-stack-lg border-t border-outline-variant pt-stack-md flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-caption text-outline">© 2024 Vault Admin Protocol. All secure sessions are logged and encrypted.</p>
+<div class="flex gap-6">
+<a class="text-caption text-outline-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-caption text-outline-variant hover:text-primary transition-colors" href="#">Security Standards</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-public-sans text-[10px] font-medium uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-900 dark:text-emerald-400 scale-110 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-public-sans text-[10px] font-medium uppercase tracking-widest">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+<span class="font-public-sans text-[10px] font-medium uppercase tracking-widest">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-public-sans text-[10px] font-medium uppercase tracking-widest">Settings</span>
+</a>
+<script src="app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', initAdminDashboard);
+</script>
+</body></html>

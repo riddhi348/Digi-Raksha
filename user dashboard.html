@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Vault Dashboard - DigiRaksha</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3DDC97",
+              "background-light": "#F3FBF8",
+              "background-dark": "#0B1512",
+              "card-light": "#FFFFFF",
+              "card-dark": "#16221F",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1.25rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      .material-symbols-rounded {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
+<div class="h-10 w-full"></div>
+<header class="px-6 py-4 flex items-center justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-rounded">shield_lock</span>
+</div>
+<div>
+<h1 class="font-bold text-lg leading-tight">DigiRaksha</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">Personal Vault</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-rounded text-slate-600 dark:text-slate-300">search</span>
+</button>
+<button onclick="navigateTo('user profile.html')" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 border-2 border-white dark:border-slate-700 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5XT3CeZis_lvCnrPUQIbOpG3gotdrAnmm6C_o_TSA0q8kH_-lVDeKdDoLR_bhrMsQoXTUAPadUkWLbGLjLM87p4an5kfSw15E9m7grZlZB2-dgtT4lj99WlKiawy4rflkR5FGAjxtHabOtJKQcpVJk6w0PABQD7hYb-k-8-S0r7QFXJF46Ao7ZmvKPTFcatbw3ZEhmVIUUAuWd1brNj6PhnRaVHk8gjBOmnc_g2Y7xNzR8mrij2GYkKfcc6YctTuQtmZVHVc9sZOf"/>
+</button>
+</div>
+</header>
+<main class="px-6 pb-24">
+<section class="mt-6">
+<h2 id="greeting-name" class="text-3xl font-bold">Hello John</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Your data is safe and secured.</p>
+</section>
+<section class="mt-8">
+<div class="grid grid-cols-2 gap-4">
+<button onclick="navigateTo('documents.html')" class="flex flex-col items-start p-5 bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 rounded-3xl shadow-sm hover:shadow-md transition-all active:scale-95 text-left">
+<div class="p-3 bg-primary/10 rounded-2xl mb-4">
+<span class="material-symbols-rounded text-primary">description</span>
+</div>
+<span class="font-semibold block">Documents</span>
+<span id="docs-count" class="text-xs text-slate-400 dark:text-slate-500">12 Items</span>
+</button>
+<button onclick="navigateTo('medical reports.html')" class="flex flex-col items-start p-5 bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 rounded-3xl shadow-sm hover:shadow-md transition-all active:scale-95 text-left">
+<div class="p-3 bg-primary/10 rounded-2xl mb-4">
+<span class="material-symbols-rounded text-primary">medical_services</span>
+</div>
+<span class="font-semibold block">Medical Reports</span>
+<span id="meds-count" class="text-xs text-slate-400 dark:text-slate-500">5 Reports</span>
+</button>
+<button onclick="navigateTo('credentials.html')" class="flex flex-col items-start p-5 bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 rounded-3xl shadow-sm hover:shadow-md transition-all active:scale-95 text-left">
+<div class="p-3 bg-primary/10 rounded-2xl mb-4">
+<span class="material-symbols-rounded text-primary">password</span>
+</div>
+<span class="font-semibold block">Credentials</span>
+<span id="creds-count" class="text-xs text-slate-400 dark:text-slate-500">28 Logins</span>
+</button>
+<button onclick="navigateTo('notes.html')" class="flex flex-col items-start p-5 bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 rounded-3xl shadow-sm hover:shadow-md transition-all active:scale-95 text-left">
+<div class="p-3 bg-primary/10 rounded-2xl mb-4">
+<span class="material-symbols-rounded text-primary">event_note</span>
+</div>
+<span class="font-semibold block">Notes</span>
+<span id="notes-count" class="text-xs text-slate-400 dark:text-slate-500">8 Snippets</span>
+</button>
+</div>
+</section>
+<section class="mt-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xl font-bold">Recent Activity</h3>
+<button class="text-sm font-medium text-primary">View All</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-4 bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 rounded-2xl">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl">
+<span class="material-symbols-rounded">article</span>
+</div>
+<div class="flex-1">
+<h4 class="font-semibold text-sm">Aadhar_Card.pdf</h4>
+<p class="text-xs text-slate-400 dark:text-slate-500">Uploaded 2 hours ago</p>
+</div>
+<button class="text-slate-400 dark:text-slate-500">
+<span class="material-symbols-rounded">more_vert</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 rounded-2xl">
+<div class="w-12 h-12 flex items-center justify-center bg-red-100 dark:bg-red-900/30 text-red-600 rounded-xl">
+<span class="material-symbols-rounded">health_metrics</span>
+</div>
+<div class="flex-1">
+<h4 class="font-semibold text-sm">Blood_Report_May.pdf</h4>
+<p class="text-xs text-slate-400 dark:text-slate-500">Modified yesterday</p>
+</div>
+<button class="text-slate-400 dark:text-slate-500">
+<span class="material-symbols-rounded">more_vert</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 rounded-2xl">
+<div class="w-12 h-12 flex items-center justify-center bg-amber-100 dark:bg-amber-900/30 text-amber-600 rounded-xl">
+<span class="material-symbols-rounded">key</span>
+</div>
+<div class="flex-1">
+<h4 class="font-semibold text-sm">Netflix Login Updated</h4>
+<p class="text-xs text-slate-400 dark:text-slate-500">3 days ago</p>
+</div>
+<button class="text-slate-400 dark:text-slate-500">
+<span class="material-symbols-rounded">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 px-6 pb-8 pt-4 flex justify-between items-center z-50">
+<button onclick="navigateTo('user dashboard.html')" class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-rounded">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Home</span>
+</button>
+<button onclick="navigateTo('documents.html')" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-rounded">folder_open</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Files</span>
+</button>
+<div class="relative -top-8">
+<button class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/30 active:scale-90 transition-transform">
+<span class="material-symbols-rounded text-3xl">add</span>
+</button>
+</div>
+<button onclick="navigateTo('user dashboard.html')" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-rounded">lock</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Vault</span>
+</button>
+<button onclick="handleLogout()" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-rounded">logout</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Exit</span>
+</button>
+</nav>
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden transition-opacity flex items-end" id="upload-menu">
+<div class="w-full bg-background-light dark:bg-background-dark rounded-t-[2.5rem] p-8 animate-in slide-in-from-bottom duration-300">
+<div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto mb-8"></div>
+<h3 class="text-xl font-bold mb-6">Quick Secure Upload</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center p-6 bg-card-light dark:bg-card-dark rounded-3xl border border-slate-100 dark:border-slate-800">
+<span class="material-symbols-rounded text-primary text-3xl mb-2">upload_file</span>
+<span class="text-sm font-semibold">Document</span>
+</button>
+<button class="flex flex-col items-center p-6 bg-card-light dark:bg-card-dark rounded-3xl border border-slate-100 dark:border-slate-800">
+<span class="material-symbols-rounded text-primary text-3xl mb-2">password</span>
+<span class="text-sm font-semibold">Credential</span>
+</button>
+<button class="flex flex-col items-center p-6 bg-card-light dark:bg-card-dark rounded-3xl border border-slate-100 dark:border-slate-800">
+<span class="material-symbols-rounded text-primary text-3xl mb-2">medical_information</span>
+<span class="text-sm font-semibold">Medical</span>
+</button>
+<button class="flex flex-col items-center p-6 bg-card-light dark:bg-card-dark rounded-3xl border border-slate-100 dark:border-slate-800">
+<span class="material-symbols-rounded text-primary text-3xl mb-2">note_add</span>
+<span class="text-sm font-semibold">Secure Note</span>
+</button>
+</div>
+<button class="w-full mt-8 py-4 bg-slate-200 dark:bg-slate-800 rounded-2xl font-bold" onclick="toggleUploadMenu()">Cancel</button>
+</div>
+</div>
+<script>
+        function toggleUploadMenu() {
+            const menu = document.getElementById('upload-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        // Attach event to the center plus button
+        document.querySelector('.fixed.bottom-0 button.w-14').addEventListener('click', toggleUploadMenu);
+        // Dark mode toggle simulation (can be added to profile)
+        // For now, let's just make sure it stays in sync with system or a switcher if we had one.
+    </script>
+
+<script src="app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', initDashboard);
+</script>
+</body></html>
