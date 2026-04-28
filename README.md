@@ -62,11 +62,3 @@ Next steps you might want me to do
 - Add a sample `.env` and instructions for secrets management
 - Create simple automated tests for the backend
 
-License
--------
-Specify a license if you intend to open-source this project.
-
-Contact
--------
-If you want changes to the README or additional setup help, tell me what to include.
-# Digi-Raksha
