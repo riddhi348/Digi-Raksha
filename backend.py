@@ -19,12 +19,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# In Render, PostgreSQL provides a single DATABASE_URL environment variable
-DATABASE_URL = os.getenv("DATABASE_URL", "mysql+mysqlconnector://root:12345@localhost:3306/digiraksha3")
+import os
+from sqlalchemy import create_engine
 
-# Note: If switching to PostgreSQL on Render, the URL starts with 'postgresql://'
+# 1. Get the URL from Render Environment Variables
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
+    # 2. Render/PostgreSQL Fix: SQLAlchemy requires 'postgresql://'
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+else:
+    # 3. Local Fallback (Your MySQL)
+    DATABASE_URL = "mysql+mysqlconnector://root:12345@localhost:3306/digiraksha3"
+
 engine = create_engine(DATABASE_URL)
-
 def get_db():
     if not DATABASE_URL:
         # Fallback for local testing if needed
