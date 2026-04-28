@@ -20,7 +20,10 @@ app.add_middleware(
 )
 
 # In Render, PostgreSQL provides a single DATABASE_URL environment variable
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL", "mysql+mysqlconnector://root:12345@localhost:3306/digiraksha3")
+
+# Note: If switching to PostgreSQL on Render, the URL starts with 'postgresql://'
+engine = create_engine(DATABASE_URL)
 
 def get_db():
     if not DATABASE_URL:
