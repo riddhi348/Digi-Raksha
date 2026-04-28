@@ -56,9 +56,4 @@ Notes & Security
 - This project contains example pages and a minimal backend; do not use it in production without adding proper authentication, encryption (TLS), and secure storage for credentials.
 - Remove or secure any hard-coded credentials before sharing or deploying.
 
-Next steps you might want me to do
----------------------------------
-- Add instructions to run with a production-ready server (e.g., Flask/uvicorn)
-- Add a sample `.env` and instructions for secrets management
-- Create simple automated tests for the backend
 
