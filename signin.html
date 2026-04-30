@@ -1,123 +1,136 @@
-<!DOCTYPE html>
-<html lang="en"><head>
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DigiRaksha - Secure Login</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<title>DigiRaksha — Sign In</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#0F3D2E",
-              "background-light": "#F3FBF8",
-              "background-dark": "#0A1210",
-              brand: {
-                label: "#102A23",
-                focus: "#1B7F5A",
-                muted: "#6B7280"
-              }
-            },
-            fontFamily: {
-              display: ["Inter", "sans-serif"],
-            },
-            borderRadius: {
-              DEFAULT: "12px",
-            },
-          },
-        },
-      };
-    </script>
+  tailwind.config = { darkMode:"class", theme:{ extend:{
+    colors:{ primary:"var(--primary)", secondary:"var(--secondary)", accent:"var(--accent)" },
+    fontFamily:{ sans:["Plus Jakarta Sans","sans-serif"] }
+  }}};
+</script>
 <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-        .ios-shadow {
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center p-6">
-<div class="fixed top-0 left-0 right-0 h-11 flex justify-between items-center px-8 pointer-events-none">
-<span class="text-sm font-semibold text-brand-label dark:text-white">9:41</span>
-<div class="flex items-center space-x-1">
-<span class="material-icons-outlined text-sm text-brand-label dark:text-white">signal_cellular_alt</span>
-<span class="material-icons-outlined text-sm text-brand-label dark:text-white">wifi</span>
-<span class="material-icons-outlined text-sm text-brand-label dark:text-white">battery_full</span>
-</div>
-</div>
-<main class="w-full max-w-sm">
-<div class="bg-white dark:bg-zinc-900 rounded-[32px] p-8 ios-shadow border border-zinc-100 dark:border-zinc-800">
-<div class="text-center mb-10">
-<div class="w-20 h-20 bg-[#E6F4EF] dark:bg-[#1A2E28] rounded-2xl mx-auto flex items-center justify-center mb-6">
-<span class="material-icons-outlined text-4xl text-brand-focus">shield</span>
-</div>
-<h1 class="text-2xl font-bold text-brand-label dark:text-white tracking-tight">Welcome Back</h1>
-<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Sign in to access your digital vault</p>
-</div>
-<form action="#" class="space-y-5" method="POST" onsubmit="handleUserLogin(event)">
-<div>
-<label class="block text-xs font-semibold uppercase tracking-wider text-brand-label dark:text-gray-300 mb-2 ml-1" for="email">
-                        Email Address
-                    </label>
-<div class="relative">
-<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-<span class="material-icons-outlined text-gray-400 text-lg">alternate_email</span>
-</span>
-<input class="block w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-zinc-800 border-0 ring-1 ring-zinc-200 dark:ring-zinc-700 focus:ring-2 focus:ring-brand-focus dark:focus:ring-brand-focus rounded-xl text-brand-label dark:text-white placeholder-gray-400 transition-all duration-200" id="email" name="email" placeholder="Enter your email" type="email"/>
-</div>
-</div>
-<div>
-<label class="block text-xs font-semibold uppercase tracking-wider text-brand-label dark:text-gray-300 mb-2 ml-1" for="password">
-                        Password
-                    </label>
-<div class="relative">
-<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-<span class="material-icons-outlined text-gray-400 text-lg">lock</span>
-</span>
-<input class="block w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-zinc-800 border-0 ring-1 ring-zinc-200 dark:ring-zinc-700 focus:ring-2 focus:ring-brand-focus dark:focus:ring-brand-focus rounded-xl text-brand-label dark:text-white placeholder-gray-400 transition-all duration-200" id="password" name="password" placeholder="Enter your password" type="password"/>
-</div>
-</div>
-<div class="flex justify-end">
-<a class="text-sm font-medium text-brand-focus hover:text-primary transition-colors" href="#">
-                        Forgot Password?
-                    </a>
-</div>
-<button class="w-full bg-primary hover:bg-[#0D3327] text-white font-semibold py-4 rounded-xl shadow-lg shadow-[#0F3D2E]/20 transition-all active:scale-[0.98] mt-2" type="submit">
-                    Sign In
-                </button>
-</form>
-<div class="relative my-8">
-<div aria-hidden="true" class="absolute inset-0 flex items-center">
-<div class="w-full border-t border-zinc-200 dark:border-zinc-800"></div>
-</div>
-<div class="relative flex justify-center text-sm">
-<span class="px-2 bg-white dark:bg-zinc-900 text-gray-400">or</span>
-</div>
-</div>
-<div class="text-center">
-<p class="text-sm text-gray-600 dark:text-gray-400">
-                    New User? 
-                    <a class="font-semibold text-brand-focus hover:text-primary transition-colors ml-1" href="signup.html">
-                        Create an account
-                    </a>
-</p>
-</div>
-</div>
-<div class="mt-8 flex items-center justify-center space-x-2 text-brand-label/40 dark:text-white/20">
-<span class="material-icons-outlined text-sm">lock</span>
-<span class="text-[10px] font-bold uppercase tracking-[0.2em]">End-to-End Encrypted</span>
-</div>
+  .material-symbols-rounded { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; font-family:'Material Symbols Rounded'; }
+  .left-panel {
+    background: linear-gradient(145deg, var(--primary) 0%, var(--secondary) 60%, color-mix(in srgb, var(--primary) 80%, black) 100%);
+    position: relative; overflow: hidden;
+  }
+  .input-wrap { position: relative; }
+  .input-wrap .icon {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: #9ab5a8; pointer-events: none;
+  }
+  html.dark .input-wrap .icon { color: #4a7a64; }
+</style>
+</head>
+<body class="bg-mesh min-h-screen flex flex-col">
+
+<header class="h-16 flex items-center justify-between px-8 border-b border-primary/8 dark:border-accent/8 bg-white/60 dark:bg-[#080F0C]/60 backdrop-blur-xl sticky top-0 z-50">
+  <a href="homepage.html" class="flex items-center gap-2.5">
+    <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,var(--secondary),var(--primary))">
+      <span class="material-symbols-rounded text-white text-base" style="font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24">shield</span>
+    </div>
+    <span class="font-black text-lg text-primary dark:text-white">Digi<span class="text-secondary dark:text-accent">Raksha</span></span>
+  </a>
+  <a href="signup.html" class="text-sm font-bold text-secondary dark:text-accent hover:underline">Create Account →</a>
+</header>
+
+<main class="flex-1 flex items-center justify-center px-6 py-12">
+  <div class="w-full max-w-4xl grid lg:grid-cols-5 gap-8 items-center">
+
+    <!-- Left decorative panel -->
+    <div class="left-panel rounded-3xl p-10 hidden lg:flex flex-col justify-between min-h-[500px] lg:col-span-2">
+      <div class="dot-grid absolute inset-0 opacity-20 rounded-3xl"></div>
+      <div class="relative z-10">
+        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">
+          <span class="material-symbols-rounded text-accent text-2xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">shield</span>
+        </div>
+        <h2 class="text-2xl font-black text-white mb-3">Welcome back.</h2>
+        <p class="text-white/60 text-sm leading-relaxed">Your vault is waiting. Sign in to access your encrypted documents, credentials, and more.</p>
+      </div>
+      <div class="relative z-10 space-y-3">
+        <div class="bg-white/8 backdrop-blur rounded-xl p-3 flex items-center gap-3">
+          <span class="material-symbols-rounded text-accent text-lg" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">description</span>
+          <div>
+            <div class="text-white text-xs font-bold">Documents</div>
+            <div class="text-white/50 text-xs">Encrypted & organized</div>
+          </div>
+        </div>
+        <div class="bg-white/8 backdrop-blur rounded-xl p-3 flex items-center gap-3">
+          <span class="material-symbols-rounded text-accent text-lg" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">medical_services</span>
+          <div>
+            <div class="text-white text-xs font-bold">Medical Records</div>
+            <div class="text-white/50 text-xs">Private & secure</div>
+          </div>
+        </div>
+        <div class="bg-white/8 backdrop-blur rounded-xl p-3 flex items-center gap-3">
+          <span class="material-symbols-rounded text-accent text-lg" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">key</span>
+          <div>
+            <div class="text-white text-xs font-bold">Credentials</div>
+            <div class="text-white/50 text-xs">Zero-knowledge stored</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="lg:col-span-3 animate-fade-up">
+      <div class="form-card">
+        <div class="text-center mb-8">
+          <div class="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center mb-4" style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 15%,transparent),color-mix(in srgb,var(--secondary) 8%,transparent))">
+            <span class="material-symbols-rounded text-secondary dark:text-accent text-2xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">lock_open</span>
+          </div>
+          <h1 class="text-2xl font-black text-primary dark:text-white">Sign In</h1>
+          <p class="text-sm text-slate-400 mt-1">Access your encrypted digital vault</p>
+        </div>
+
+        <form class="space-y-5" onsubmit="handleUserLogin(event)">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">Email / Username</label>
+            <div class="input-wrap">
+              <span class="icon material-symbols-rounded text-lg">alternate_email</span>
+              <input class="input-field" id="email" name="email" placeholder="Enter your email or username" type="text"/>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Password</label>
+              <a href="#" class="text-xs font-semibold text-secondary dark:text-accent hover:underline">Forgot password?</a>
+            </div>
+            <div class="input-wrap">
+              <span class="icon material-symbols-rounded text-lg">lock</span>
+              <input class="input-field" id="password" name="password" placeholder="Enter your password" type="password"/>
+            </div>
+          </div>
+          <button class="btn-primary w-full flex items-center justify-center gap-2 mt-2" type="submit">
+            <span class="material-symbols-rounded text-lg">login</span> Sign In to Vault
+          </button>
+        </form>
+
+        <div class="relative my-6">
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-primary/8 dark:border-accent/8"></div></div>
+          <div class="relative flex justify-center"><span class="px-3 text-xs text-slate-400 bg-white dark:bg-[#111A16]">or continue with</span></div>
+        </div>
+
+        <p class="text-center text-sm text-slate-500 dark:text-slate-400">
+          New to DigiRaksha? <a href="signup.html" class="font-bold text-secondary dark:text-accent hover:underline">Create a free account</a>
+        </p>
+
+        <div class="mt-6 flex items-center justify-center gap-2">
+          <span class="material-symbols-rounded text-accent text-sm" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">gpp_good</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-slate-400">End-to-End Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
-<div class="fixed bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-black/10 dark:bg-white/10 rounded-full"></div>
+
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
+
+

@@ -1,264 +1,159 @@
-<!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FORTRESS - Secure Medical Upload</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-primary-fixed": "#002116",
-                    "on-tertiary": "#ffffff",
-                    "surface-variant": "#e2e3e0",
-                    "primary-container": "#0f3d2e",
-                    "tertiary-container": "#542a26",
-                    "on-error": "#ffffff",
-                    "outline": "#717974",
-                    "surface-container-lowest": "#ffffff",
-                    "on-surface": "#1a1c1b",
-                    "on-background": "#1a1c1b",
-                    "surface-dim": "#d9dad7",
-                    "inverse-surface": "#2f312f",
-                    "surface-container-highest": "#e2e3e0",
-                    "background": "#f9faf7",
-                    "on-surface-variant": "#414944",
-                    "inverse-primary": "#a2d1bb",
-                    "error-container": "#ffdad6",
-                    "tertiary-fixed": "#ffdad6",
-                    "surface-container": "#edeeeb",
-                    "inverse-on-surface": "#f0f1ee",
-                    "tertiary-fixed-dim": "#f7b7b0",
-                    "primary": "#00261a",
-                    "tertiary": "#3a1512",
-                    "on-primary": "#ffffff",
-                    "surface": "#f9faf7",
-                    "on-tertiary-fixed-variant": "#683a36",
-                    "secondary-container": "#96f2c5",
-                    "on-tertiary-container": "#cc908a",
-                    "on-secondary": "#ffffff",
-                    "secondary-fixed-dim": "#7dd8ad",
-                    "on-secondary-fixed-variant": "#005237",
-                    "primary-fixed": "#beedd7",
-                    "on-secondary-fixed": "#002114",
-                    "surface-bright": "#f9faf7",
-                    "error": "#ba1a1a",
-                    "on-primary-container": "#7ba894",
-                    "on-error-container": "#93000a",
-                    "surface-tint": "#3b6756",
-                    "surface-container-high": "#e8e8e5",
-                    "primary-fixed-dim": "#a2d1bb",
-                    "on-tertiary-fixed": "#34100d",
-                    "secondary": "#006c4a",
-                    "outline-variant": "#c0c8c3",
-                    "secondary-fixed": "#99f5c8",
-                    "surface-container-low": "#f3f4f1",
-                    "on-secondary-container": "#00714e",
-                    "on-primary-fixed-variant": "#234f3f"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "stack-xs": "4px",
-                    "stack-lg": "32px",
-                    "unit": "8px",
-                    "stack-md": "16px",
-                    "margin": "32px",
-                    "stack-sm": "8px",
-                    "gutter": "24px",
-                    "container-max": "1280px"
-            },
-            "fontFamily": {
-                    "label-md": ["Public Sans"],
-                    "h2": ["Public Sans"],
-                    "body-md": ["Public Sans"],
-                    "caption": ["Public Sans"],
-                    "h1": ["Public Sans"],
-                    "body-lg": ["Public Sans"],
-                    "h3": ["Public Sans"]
-            },
-            "fontSize": {
-                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                    "h2": ["32px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
-                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
-    </script>
+<title>Medical Reports — DigiRaksha</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode:"class", theme:{ extend:{
+    colors:{ primary:"var(--primary)", secondary:"var(--secondary)", accent:"var(--accent)" },
+    fontFamily:{ sans:["Plus Jakarta Sans","sans-serif"] }
+  }}};
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body { font-family: 'Public Sans', sans-serif; background-color: #f9faf7; }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background text-on-background min-h-screen pb-32">
-<!-- TopAppBar -->
-<header class="bg-slate-50 flex justify-between items-center px-6 h-16 w-full fixed top-0 z-50 border-b border-emerald-100 shadow-sm shadow-emerald-900/5">
-<div onclick="navigateTo('user dashboard.html')" class="flex items-center gap-4 cursor-pointer">
-<span class="material-symbols-outlined text-emerald-900" data-icon="shield">shield</span>
-<span class="text-xl font-black text-emerald-900 tracking-widest font-public-sans">FORTRESS</span>
-</div>
-<div class="flex items-center">
-<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-[10px] text-white border border-secondary">UP</div>
-</div>
-</header>
-<main class="mt-24 px-6 max-w-2xl mx-auto">
-<div class="mb-stack-lg">
-<h1 class="font-h1 text-h1 text-primary tracking-tight">Upload Medical Report</h1>
-<p class="font-body-md text-body-md text-on-surface-variant mt-stack-sm">Secure your health documents with end-to-end encryption.</p>
-</div>
-<!-- Progress Stepper (As per Style Guidance) -->
-<div class="flex items-center gap-2 mb-stack-lg overflow-hidden">
-<div class="flex-1 h-1 bg-secondary rounded-full"></div>
-<div class="flex-1 h-1 bg-surface-container rounded-full"></div>
-<div class="flex-1 h-1 bg-surface-container rounded-full"></div>
-</div>
-<!-- Secure Upload Cards (Bento Grid Style) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg">
-<button class="flex flex-col items-center justify-center p-stack-lg border border-outline-variant bg-white rounded-xl hover:shadow-[0_4px_12px_rgba(15,61,46,0.05)] hover:border-secondary transition-all group relative overflow-hidden">
-<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-stack-md text-on-secondary-container">
-<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
-</div>
-<span class="font-label-md text-label-md text-primary">Upload from device</span>
-<span class="font-caption text-caption text-on-surface-variant mt-1">PDF, JPG, PNG up to 20MB</span>
-</button>
-<button class="flex flex-col items-center justify-center p-stack-lg border border-outline-variant bg-white rounded-xl hover:shadow-[0_4px_12px_rgba(15,61,46,0.05)] hover:border-secondary transition-all group relative overflow-hidden">
-<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-stack-md text-on-secondary-container">
-<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
-</div>
-<span class="font-label-md text-label-md text-primary">Scan with camera</span>
-<span class="font-caption text-caption text-on-surface-variant mt-1">Direct high-res scan</span>
-</button>
-</div>
-<!-- Form Section -->
-<div class="space-y-stack-md bg-white p-6 border border-outline-variant rounded-xl shadow-sm">
-<div class="grid grid-cols-1 gap-stack-md">
-<!-- Hospital/Clinic Name -->
-<div class="flex flex-col gap-1.5">
-<label class="font-label-md text-label-md text-primary px-1">Hospital/Clinic Name</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="account_balance">account_balance</span>
-<input class="w-full pl-10 pr-4 py-3 bg-background border border-outline-variant rounded-lg focus:ring-1 focus:ring-secondary focus:border-secondary transition-all outline-none font-body-md text-body-md" placeholder="e.g. Mayo Clinic" type="text"/>
-</div>
-</div>
-<!-- Doctor's Name -->
-<div class="flex flex-col gap-1.5">
-<label class="font-label-md text-label-md text-primary px-1">Doctor's Name</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="medical_information">medical_information</span>
-<input class="w-full pl-10 pr-4 py-3 bg-background border border-outline-variant rounded-lg focus:ring-1 focus:ring-secondary focus:border-secondary transition-all outline-none font-body-md text-body-md" placeholder="Dr. Jane Smith" type="text"/>
-</div>
-</div>
-<!-- Date of report -->
-<div class="flex flex-col gap-1.5">
-<label class="font-label-md text-label-md text-primary px-1">Date of report</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="calendar_today">calendar_today</span>
-<input class="w-full pl-10 pr-4 py-3 bg-background border border-outline-variant rounded-lg focus:ring-1 focus:ring-secondary focus:border-secondary transition-all outline-none font-body-md text-body-md" type="date"/>
-</div>
-</div>
-</div>
-<!-- Additional Detail Toggle -->
-<div class="pt-stack-sm">
-<button class="flex items-center gap-2 text-secondary font-label-md text-label-md">
-<span class="material-symbols-outlined text-lg" data-icon="add_circle">add_circle</span>
-                    Add patient tags or notes
-                </button>
-</div>
-</div>
-<!-- Encryption Note -->
-<div class="mt-stack-lg flex items-start gap-4 p-4 bg-emerald-50 border border-emerald-100 rounded-xl">
-<span class="material-symbols-outlined text-secondary" data-icon="verified_user">verified_user</span>
-<div>
-<p class="font-label-md text-label-md text-on-secondary-container">Fortress Protocol Active</p>
-<p class="font-caption text-caption text-on-primary-fixed-variant">This document will be encrypted locally before being transmitted to the secure vault.</p>
-</div>
-</div>
-<!-- Action Button -->
-<div class="mt-stack-lg">
-<button onclick="handleMedicalSave(event)" class="w-full bg-primary-container text-white py-4 rounded-xl font-h3 text-h3 flex items-center justify-center gap-2 hover:bg-black active:scale-[0.98] transition-all shadow-lg shadow-emerald-900/20">
-<span class="material-symbols-outlined" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
-                Securely Upload
-            </button>
-</div>
-</main>
-<!-- Navigation Drawer (Desktop Placeholder Logic) -->
-<aside class="hidden lg:flex fixed inset-y-0 left-0 z-[60] flex-col p-6 h-full w-80 border-r border-emerald-50 bg-white shadow-2xl shadow-emerald-900/20">
-<div class="mb-stack-lg">
-<span class="text-lg font-bold text-emerald-900 tracking-tight">FORTRESS</span>
-</div>
-<div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 mb-stack-lg">
-<div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Close-up professional headshot of a mature security expert with focused expression against a neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfsdoqnLGZbMcDMZtQB849LMmGLLCpyhYjGZplqgTfOU9asdq3GH0F0AOz0oZYDzl759d_JWB0GRZ0iZIXZV_jNd4vAkdMABsZ5jf9CwKBrfW-BRGJYL2Hrp6CYn8q9Q1brRDUZTwO51_7EijXeFNIpQ5AP4yErkHZmGrmGC5dCh6rFqTRUjtDGQnIv7BaeP1igxfwy1Rl9_bg6D2vLhR3xskoq-TFcOcYTXLQg6GwKwhx63sfxHt4X-4zPXuTzypYhO0ggG_E7Xq4"/>
-</div>
-<div>
-<p class="font-public-sans text-sm font-bold text-emerald-900">Secure User</p>
-<p class="text-xs text-slate-500">Pro Plan Member</p>
-</div>
-</div>
-<nav class="space-y-2">
-<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 transition-all group" href="#">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-secondary" data-icon="security">security</span>
-<span class="font-public-sans text-sm font-medium">Security Settings</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 transition-all group" href="#">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-secondary" data-icon="vpn_key">vpn_key</span>
-<span class="font-public-sans text-sm font-medium">Encryption Keys</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 transition-all group" href="#">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-secondary" data-icon="group">group</span>
-<span class="font-public-sans text-sm font-medium">Shared Vaults</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 transition-all group" href="#">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-secondary" data-icon="help_outline">help_outline</span>
-<span class="font-public-sans text-sm font-medium">Help Center</span>
-</a>
-</nav>
+  .material-symbols-rounded { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; font-family:'Material Symbols Rounded'; }
+  .topbar { background:rgba(255,255,255,0.8); backdrop-filter:blur(16px); border-bottom:1px solid color-mix(in srgb,var(--primary) 7%,transparent); }
+  html.dark .topbar { background:color-mix(in srgb,var(--bg-dark) 80%,transparent); border-bottom-color:color-mix(in srgb,var(--accent) 7%,transparent); }
+  .input-wrap { position:relative; }
+  .input-wrap .icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#9ab5a8; pointer-events:none; }
+  html.dark .input-wrap .icon { color:#4a7a64; }
+  .method-card {
+    border:1.5px solid rgba(15,61,46,0.08); border-radius:16px; padding:20px;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    cursor:pointer; transition:all 0.25s; text-align:center;
+    background:white;
+  }
+  html.dark .method-card { background:var(--card-dark); border-color:color-mix(in srgb,var(--accent) 8%,transparent); }
+  .method-card:hover { border-color:color-mix(in srgb,var(--accent) 40%,transparent); transform:translateY(-3px); box-shadow:0 8px 24px var(--btn-shadow); }
+  html.dark .method-card:hover { box-shadow:0 8px 24px rgba(0,0,0,0.3); }
+</style>
+</head>
+<body class="bg-mesh min-h-screen flex">
+
+<aside class="sidebar">
+  <div class="p-6 border-b border-primary/8 dark:border-accent/8">
+    <a href="homepage.html" class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,var(--secondary),var(--primary))">
+        <span class="material-symbols-rounded text-white text-lg" style="font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24">shield</span>
+      </div>
+      <span class="font-black text-base text-primary dark:text-white">Digi<span class="text-secondary dark:text-accent">Raksha</span></span>
+    </a>
+  </div>
+  <div class="p-4 flex-1 flex flex-col gap-1">
+    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 px-3 mb-2 mt-2">Main Menu</p>
+    <a href="user dashboard.html" class="nav-link"><span class="material-symbols-rounded text-lg">grid_view</span> Dashboard</a>
+    <a href="documents.html" class="nav-link"><span class="material-symbols-rounded text-lg">description</span> Documents</a>
+    <a href="medical reports.html" class="nav-link active"><span class="material-symbols-rounded text-lg">medical_services</span> Medical Reports</a>
+    <a href="credentials.html" class="nav-link"><span class="material-symbols-rounded text-lg">password</span> Credentials</a>
+    <a href="notes.html" class="nav-link"><span class="material-symbols-rounded text-lg">edit_note</span> Secure Notes</a>
+  </div>
+  <div class="p-4 border-t border-primary/8 dark:border-accent/8">
+    <button onclick="handleLogout()" class="nav-link w-full text-red-400 hover:bg-red-50 dark:hover:bg-red-900/15 hover:text-red-500">
+      <span class="material-symbols-rounded text-lg">logout</span> Sign Out
+    </button>
+  </div>
 </aside>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white border-t border-emerald-100 shadow-[0_-4px_12px_rgba(15,61,46,0.05)] md:hidden">
-<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1" href="user dashboard.html">
-<span class="material-symbols-outlined" data-icon="lock">lock</span>
-<span class="font-public-sans text-[10px] font-semibold uppercase tracking-wider mt-1">Vault</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1" href="credentials.html">
-<span class="material-symbols-outlined" data-icon="key">key</span>
-<span class="font-public-sans text-[10px] font-semibold uppercase tracking-wider mt-1">Credentials</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-emerald-50 text-emerald-900 rounded-xl px-4 py-1" href="documents.html">
-<span class="material-symbols-outlined" data-icon="add_box" style="font-variation-settings: 'FILL' 1;">add_box</span>
-<span class="font-public-sans text-[10px] font-semibold uppercase tracking-wider mt-1">Upload</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1" href="medical reports.html">
-<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
-<span class="font-public-sans text-[10px] font-semibold uppercase tracking-wider mt-1">Medical</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1" href="user dashboard.html">
-<span class="material-symbols-outlined" data-icon="history">history</span>
-<span class="font-public-sans text-[10px] font-semibold uppercase tracking-wider mt-1">Activity</span>
-</a>
+
+<div class="flex-1 flex flex-col">
+  <header class="topbar h-16 flex items-center justify-between px-8 sticky top-0 z-10">
+    <div class="flex items-center gap-3">
+      <div class="icon-box"><span class="material-symbols-rounded" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">medical_services</span></div>
+      <div>
+        <h2 class="font-black text-base text-primary dark:text-white">Upload Medical Report</h2>
+        <p class="text-xs text-slate-400">Private & end-to-end encrypted</p>
+      </div>
+    </div>
+    <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-xl flex items-center justify-center hover:bg-accent/10 transition-colors border border-primary/8 dark:border-accent/8">
+      <span class="material-symbols-rounded text-secondary dark:text-accent text-lg">dark_mode</span>
+    </button>
+  </header>
+
+  <main class="flex-1 p-8">
+    <div class="max-w-2xl space-y-6">
+
+      <!-- Progress stepper -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white" style="background:linear-gradient(135deg,var(--accent),var(--secondary))">1</div>
+          <span class="text-xs font-bold text-secondary dark:text-accent">Choose Method</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-accent/30 rounded-full"></div>
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-slate-400 border-2 border-slate-200 dark:border-slate-700">2</div>
+          <span class="text-xs font-bold text-slate-400">Fill Details</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-slate-400 border-2 border-slate-200 dark:border-slate-700">3</div>
+          <span class="text-xs font-bold text-slate-400">Encrypt & Save</span>
+        </div>
+      </div>
+
+      <!-- Upload method -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="method-card">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 15%,transparent),color-mix(in srgb,var(--secondary) 8%,transparent))">
+            <span class="material-symbols-rounded text-secondary dark:text-accent text-2xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">upload_file</span>
+          </div>
+          <span class="font-bold text-sm text-primary dark:text-white">Upload from device</span>
+          <span class="text-xs text-slate-400">PDF, JPG, PNG · 20MB max</span>
+        </div>
+        <div class="method-card">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 15%,transparent),color-mix(in srgb,var(--secondary) 8%,transparent))">
+            <span class="material-symbols-rounded text-secondary dark:text-accent text-2xl" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">photo_camera</span>
+          </div>
+          <span class="font-bold text-sm text-primary dark:text-white">Scan with camera</span>
+          <span class="text-xs text-slate-400">Direct high-res scan</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card space-y-5">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Hospital / Clinic Name</label>
+          <div class="input-wrap">
+            <span class="icon material-symbols-rounded text-lg">account_balance</span>
+            <input class="input-field" placeholder="e.g. Apollo Hospital" type="text"/>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Doctor's Name</label>
+          <div class="input-wrap">
+            <span class="icon material-symbols-rounded text-lg">medical_information</span>
+            <input class="input-field" placeholder="Dr. Jane Smith" type="text"/>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Date of Report</label>
+          <div class="input-wrap">
+            <span class="icon material-symbols-rounded text-lg">calendar_today</span>
+            <input class="input-field" type="date" style="padding-left:44px"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Encryption notice -->
+      <div class="flex items-start gap-3 p-4 rounded-2xl" style="background:color-mix(in srgb,var(--accent) 6%,transparent);border:1px solid color-mix(in srgb,var(--accent) 15%,transparent)">
+        <span class="material-symbols-rounded text-secondary dark:text-accent shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">verified_user</span>
+        <div>
+          <p class="font-bold text-sm text-primary dark:text-white">Fortress Protocol Active</p>
+          <p class="text-xs text-slate-400 mt-0.5">This document will be encrypted locally before being transmitted to the secure vault.</p>
+        </div>
+      </div>
+
+      <button onclick="handleMedicalSave(event)" class="btn-primary w-full flex items-center justify-center gap-2">
+        <span class="material-symbols-rounded text-lg" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24">lock</span>
+        Securely Upload Report
+      </button>
+    </div>
+  </main>
+</div>
+
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
+
+

@@ -64,7 +64,7 @@
 <p class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">Personal Digital Vault</p>
 </div>
 </div>
-<button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<button type="button" onclick="navigateTo('user dashboard.html')" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
 <span class="material-icons-round text-gray-600 dark:text-gray-300">more_vert</span>
 </button>
 </header>
@@ -75,7 +75,7 @@
 <span class="material-icons-round">person</span>
 <span class="text-[9px] font-bold uppercase tracking-wider">Profile</span>
 </button>
-<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600 hover:text-red-500 transition-colors">
+<button type="button" onclick="deleteCurrentAccount(event)" class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600 hover:text-red-500 transition-colors">
 <span class="material-icons-round">no_accounts</span>
 <span class="text-[9px] font-bold uppercase tracking-wider">Delete</span>
 </button>
@@ -83,7 +83,7 @@
 <span class="material-icons-round">lock</span>
 <span class="text-[9px] font-bold uppercase tracking-wider">Vault</span>
 </button>
-<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600">
+<button type="button" onclick="document.getElementById('profile-full-name').focus()" class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600">
 <span class="material-icons-round">settings</span>
 <span class="text-[9px] font-bold uppercase tracking-wider">Config</span>
 </button>
@@ -96,7 +96,7 @@
 <button class="absolute bottom-0 right-1/2 translate-x-12 translate-y-1 bg-primary text-white p-2 rounded-full shadow-lg border-2 border-white dark:border-gray-900">
 <span class="material-icons-round text-sm">photo_camera</span>
 </button>
-<h2 class="mt-4 font-semibold text-lg text-gray-900 dark:text-white">John Doe</h2>
+<h2 id="profile-display-name" class="mt-4 font-semibold text-lg text-gray-900 dark:text-white">John Doe</h2>
 <p class="text-xs text-gray-500">Last updated: 2 days ago</p>
 </div>
 <div class="space-y-5">
@@ -106,32 +106,32 @@
 </div>
 <div>
 <label class="ios-label">Full Name</label>
-<input class="ios-input" placeholder="Enter full name" type="text" value="Johnathon Doe"/>
+<input id="profile-full-name" class="ios-input" placeholder="Enter full name" type="text" value="Johnathon Doe"/>
 </div>
 <div>
 <label class="ios-label">Email Address</label>
-<input class="ios-input" placeholder="Enter email" type="email" value="john.doe@example.com"/>
+<input id="profile-email" class="ios-input" placeholder="Enter email" type="email" value="john.doe@example.com"/>
 </div>
 <div>
 <label class="ios-label">Phone Number</label>
-<input class="ios-input" placeholder="Enter phone number" type="tel" value="+1 (555) 000-0000"/>
+<input id="profile-phone" class="ios-input" placeholder="Enter phone number" type="tel" value="+1 (555) 000-0000"/>
 </div>
 <div class="grid grid-cols-1 gap-5">
 <div>
 <label class="ios-label">Date of Birth</label>
 <div class="relative">
-<input class="ios-input" type="date" value="1990-05-15"/>
+<input id="profile-dob" class="ios-input" type="date" value="1990-05-15"/>
 <span class="material-icons-round absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xl">calendar_today</span>
 </div>
 </div>
 </div>
 <div>
 <label class="ios-label">Address</label>
-<textarea class="ios-input h-24 resize-none" placeholder="Enter your full address">123 Digital Vault Street, Secure City, SC 94000</textarea>
+<textarea id="profile-address" class="ios-input h-24 resize-none" placeholder="Enter your full address">123 Digital Vault Street, Secure City, SC 94000</textarea>
 </div>
 </div>
 <div class="mt-10 pt-6 border-t border-gray-100 dark:border-gray-800">
-<button class="w-full flex items-center justify-between p-4 rounded-xl border-2 border-red-50 dark:border-red-900/20 bg-red-50/50 dark:bg-red-900/10 group">
+<button type="button" onclick="deleteCurrentAccount(event)" class="w-full flex items-center justify-between p-4 rounded-xl border-2 border-red-50 dark:border-red-900/20 bg-red-50/50 dark:bg-red-900/10 group">
 <div class="flex items-center gap-3">
 <span class="material-icons-round text-red-500">delete_forever</span>
 <div class="text-left">
@@ -149,7 +149,7 @@
 <button onclick="navigateTo('user dashboard.html')" class="flex-1 py-3.5 border-2 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
                 Cancel
             </button>
-<button onclick="mockAction(event, 'Save Changes', 'Saving...', 'Saved')" class="flex-[2] py-3.5 bg-primary text-white font-semibold rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+<button onclick="saveUserProfile(event)" class="flex-[2] py-3.5 bg-primary text-white font-semibold rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
 <span class="material-icons-round text-lg">save</span>
                 Save Changes
             </button>
@@ -160,4 +160,5 @@
 </div>
 
 <script src="app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', initUserProfilePage);</script>
 </body></html>
